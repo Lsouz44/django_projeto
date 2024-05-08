@@ -30,4 +30,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python manage.py teste
+        dir  # Print current directory for debugging
+        python manage.py loja
