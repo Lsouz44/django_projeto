@@ -31,8 +31,9 @@ jobs:
     - name: Run Tests
       run: |
         cd env
-        Scripts\Activate
-        cd ..
+        dir  # Print current directory for debugging
+        Scripts\Activate.bat
+        cd..
         cd loja
         dir  # Print current directory for debugging
         python manage.py runserver
