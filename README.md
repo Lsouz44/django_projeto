@@ -70,8 +70,9 @@ O sistema pode ser acessado no endereço mostrado no terminal.
 
 Você pode navegar pela interface.
 
-Para acessar como administrador acesse o [<ip_do_terminal>/admin]
+Para acessar como administrador, no navegador: <ip_do_terminal>/admin
 Usuário: admin   |   Senha: admin
 
+---
 
 Feito por Lsouz44, inspirado no projeto do sangiorgiovba :wave:
