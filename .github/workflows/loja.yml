@@ -16,15 +16,11 @@ jobs:
         python-version: [3]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4.2.0
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Node20
-      run: |
-        using: 'node20'
-        main: 'main.js'
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
