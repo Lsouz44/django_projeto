@@ -32,8 +32,10 @@ jobs:
       run: |
         cd env
         dir  # Print current directory for debugging
-        Scripts\Activate.bat
+        Scripts\Activate
         cd..
         cd loja
         dir  # Print current directory for debugging
+        python manage.py migrate
+        python manage.py migrations
         python manage.py runserver
