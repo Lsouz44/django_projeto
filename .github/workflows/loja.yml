@@ -32,4 +32,4 @@ jobs:
       run: |
         cd loja
         dir  # Print current directory for debugging
-        python manage.py loja
+        python manage.py runserver
