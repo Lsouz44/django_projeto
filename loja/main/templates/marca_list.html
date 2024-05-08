@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="container my-4">
+
+	<h3 class="my-4 border-bottom pb-1">Marcas</h3>
+	<div class="row">
+		{% if data %}
+			{% for marca in data %}
+				<div class="col-md-3 mb-4">
+					<div class="card shadow">
+					<a href="/marca-product-list/{{marca.id}}"><img src="/media/{{marca.image}}" class="card-img-top" alt="{{marca.title}}" /></a>
+					<div class="card-body">
+						<h6 class="card-text"><a href="/marca-product-list/{{marca.id}}">{{marca.title}}</a></h6>
+					</div>
+					</div>
+				</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+</main>
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<main class="container my-4">
+
+    <h3 class="my-4 border-bottom pb1">{{data.title}}</h3>
+	<div class="row">
+
+        <div class="col-md-4">
+            <img id="zoom_01" data-zoom-image="/media/{{data.productattribute_set.first.image}}" src="/media/{{data.productattribute_set.first.image}}" class="card-img-top" alt="{{product.title}}">
+        </div>
+        <div class="col-md-8">
+            <p>{{data.detail}}</p>
+            <hr/>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Preço</th>
+                    <th>R${{data.productattribute_set.first.price}}</th>
+                </tr>
+                <tr>
+                    <th>Cores</th>
+                        <td>
+                            {% for p_attr in data.productattribute_set.all %}
+                            <button class="btn btn-lg choose-color" style="background-color:{{p_attr.color__color_codigo}}"></button>
+                            {% endfor %}
+                        </td>
+                </tr>
+                <tr>
+                    <th>Tamanhos</th>
+                    <td>
+                        {% for p_attr in data.productattribute_set.all %}
+                        <button class="btn btn-lg choose-color">{{p_attr.size.title}}</button>
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <th>$ <span class="product-price-{{data.id}}">{{data.productattribute_set.first.price}}</span></th>
+                </tr>
+            </table>
+            <hr/>
+            <div class="input-group my-3" style="width:30%;">
+                <input type="number" value="1" class="form-control product-qty-{{data.id}}" id="productQty" />
+                <div class="input-group-append">
+                    <input type="hidden" class="product-image-{{data.id}}" value="{{data.productattribute_set.first.image}}" />
+                        <input type="hidden" class="product-id-{{data.id}}" value="{{data.id}}" />
+                        <input type="hidden" class="product-title-{{data.id}}" value="{{data.title}}" />
+                    <button class="btn btn-success btn-sm add-to-cart" data-index="{{data.id}}" type="button" id="addToCartBtn"><i class="fa fa-shopping-cart"></i>Adicionar Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="my-3">Detalhes</h3>
+            <!-- Detail -->
+            <table class="table table-bordered">
+                <tr>
+                    <th>Marca</th>
+                    <td><a href="">{{data.marca.title}}</a></td>
+                </tr>
+                <tr>
+                    <th>Categorias</th>
+                    <td><a href="">{{data.category.title}}</a></td>
+                </tr>
+                <tr>
+                    <th>Especificações</th>
+                    <td><a href="">{{data.specs}}</a></td>
+                </tr>
+            </table>
+        </div>
+        <!-- Reviews -->
+        <div class="col-md-6">
+            <h3 class="my-3">Avaliações - <span class="avg-rating"></span>/5 <i class="fa fa-star text-warning"></i>
+            
+            
+                <button data-toggle="modal" data-target="#productReview" type="button" class="btn btn-info btf-sm float-right reviewBtn">Adicionar Avaliação</button>
+
+            </h3>
+
+    <div class="modal fade" id="productReview" tabindex="-1" aria-labellebdy="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Adicionar Produto Avaliações</h5>
+                    <button type="button" class="close" data-dismiss="model" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="addForm" action="">
+
+                        <table class="table table-bordered">
+
+                            <tr>
+                                <td colspan="2">
+                                    <button type="submit" class="btn btn-primary">Enviar</button>
+                                    <input type="reset" class="btn btn-dark" value="Reset" id="Reset"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <p class="ajaxRes"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </h3>
+            <div class="card">
+                <div class="card-body review-list" style="max-height: 400px; overflow: auto;">
+
+                        <blockquote class="blockquote text-right">
+                            <small></small>
+                            <footer class="blockquote-footer">
+                                <cite tilte="Source Title">
+
+                                    <i class="fa fa-star text-warning"></i>
+                                
+                                </cite>
+                            </footer>
+                        </blockquote>
+                        <hr />
+
+                        <p class="no data">Adicionar Primeira Avaliação</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="mt-4 mb-3 border-bottom pb-1">Produtos Relacionados</h3>
+    <div class="row">
+
+        <div class="col-lg-3 col-sm-4 mb-4">
+            <div class="card shadow">
+                <a href=""><img src="" class="card-img-top" alt=""></a>
+                <div class="card-body">
+                    <h6 class="card-text"><a href="">{{product.title}}</a></h6>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-sm btn-primary"><i class="fa fa-shopping-cart"></i></button>
+                    <button class="btn btn-sm btn-danger"><i class="fa fa-heart"></i></button>
+                    <span class="float-right">
+                        4.5/5
+                        <i class="fa fa-star text-warning"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+</main>
+
+<script src="{% static 'jquery.ex-plus.js' %}"></script>
+<script type="text/javascript">
+    $('#zoom_01').ezPlus();
+</script>
+
+<script src="{% static 'custom.js' %}"></script>
+
+{% endblock %}
