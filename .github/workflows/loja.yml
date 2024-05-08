@@ -26,6 +26,7 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
+        dir  # Print current directory for debugging
         pip install -r requirements.txt
     - name: Run Tests
       run: |
