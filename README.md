@@ -24,6 +24,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Projeto simples de uma aplicação web de uma loja virtual. Para aprender e desenvolver habilidades com o framework Django.
 
+O projeto não está completo, tendo em vista que a intenção era apenas aprender o funcionamento inicial do Django. Assim o resto do projeto foca mais na comunicação das páginas, front-end e banco de dados. Sendo que ainda tenho planos de exercitar esses estudos e posso retomar esse projeto fazendo implementações de contas e login, bem como API de pagamentos e entre outras coisas.
+
 
 ## ⚙️ Instalação
 
